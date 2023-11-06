@@ -24,14 +24,12 @@ def agregar_producto(listaCompra, contador):
         
 
 def mostrar_lista_compra(listaCompra):
-    resultado = []
-    resultado.append("\nLista de la compra\n")
+    print("\nLista de la compra\n")
     total = 0
     for articulo, precio in listaCompra.items():
-        resultado.append(f"{articulo} \t Precio: {precio}")
+        print(f"{articulo} \t Precio: {precio}")
         total += precio
-    resultado.append(f"\nTotal \t\t Coste: {total}") 
-    return resultado
+    return f"\nTotal \t\t Coste: {total}"
 
 if __name__ == "__main__":
     # Entrada
