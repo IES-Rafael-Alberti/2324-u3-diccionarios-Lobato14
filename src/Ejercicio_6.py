@@ -1,0 +1,57 @@
+# Escribir un programa que cree un diccionario vacío y lo vaya llenado con información 
+# sobre una persona (por ejemplo nombre, edad, sexo, teléfono, correo electrónico, etc.) 
+# que se le pida al usuario. Cada vez que se añada un nuevo dato debe imprimirse el 
+# contenido del diccionario.
+
+def validar_edad(edad):
+    return edad.isdigit() and int(edad) >= 0
+
+def validar_telefono(telefono):
+    return telefono.isdigit()
+
+def imprimir_lista_usuarios(usuarios):
+    print("Lista de usuarios:")
+    for usuario in usuarios:
+        print(usuario)
+    print()
+
+if __name__ == "__main__":
+    # Entrada
+    datosUsuarios = []
+    agregar_usuario = "si"
+    # Proceso
+    while agregar_usuario.lower() == "si":
+        
+        datosPersona = {}
+        nombre = input("Escriba su nombre: ")
+        datosPersona["nombre"] = nombre
+        apellidos = input("Escriba sus apellidos: ")
+        datosPersona["apellidos"] = apellidos
+        
+        edad_valida = False
+        while not edad_valida:
+            edad = input("Escriba su edad: ")
+            if validar_edad(edad):
+                datosPersona["edad"] = int(edad)
+                edad_valida = True
+            else:
+                print("Edad inválida. Debe ingresar un número entero positivo.")
+        
+        sexo = input("Escriba su sexo: ")
+        datosPersona["sexo"] = sexo
+        
+        telefono_valido = False
+        while not telefono_valido:
+            telefono = input("Escriba su número de teléfono: ")
+            if validar_telefono(telefono):
+                datosPersona["telefono"] = telefono
+                telefono_valido = True
+            else:
+                print("Número de teléfono inválido. Intente nuevamente.")
+
+        datosUsuarios.append(datosPersona)
+        print("Usuario añadido:", datosPersona)
+        
+        agregar_usuario = input("¿Deseas añadir un nuevo usuario? (si/no): ")
+    # Salida
+    imprimir_lista_usuarios(datosUsuarios)
