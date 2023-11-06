@@ -17,9 +17,10 @@ def calcular_precio(fruta, kilos, diccionario_frutas):
         return None
     
 if __name__ == "__main__":
+    # Entrada
     dicFrutas = {"Platano": 1.35, "Manzana": 0.80, "Pera": 0.85, "Naranja": 0.70}
     fruta = input("Escoja una fruta: ")
-
+    # Proceso
     while fruta not in dicFrutas:
         print("La fruta seleccionada no está en el diccionario.")
         fruta = input("Escoja una fruta: ")
@@ -34,7 +35,7 @@ if __name__ == "__main__":
             print("Por favor, ingrese un número positivo para los kilos.")
 
     precio_total = calcular_precio(fruta, kilos, dicFrutas)
-    
+    # Salida
     if precio_total is not None:
         print("El precio final de", kilos, "kilos de", fruta, "es de", round(precio_total,2))
     else:
