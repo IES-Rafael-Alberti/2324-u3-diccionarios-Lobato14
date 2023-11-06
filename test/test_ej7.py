@@ -1,4 +1,3 @@
-import textwrap
 from src.Ejercicio_7 import agregar_producto, mostrar_lista_compra
 
 # Prueba para la función agregar_producto
