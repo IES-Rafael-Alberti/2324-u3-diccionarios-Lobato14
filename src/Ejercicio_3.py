@@ -9,12 +9,33 @@
 #   Pera	         0.85
 #   Naranja	         0.70
 
+def calcular_precio(fruta, kilos, diccionario_frutas):
+    if fruta in diccionario_frutas and kilos >= 0:
+        precio_total = kilos * diccionario_frutas[fruta]
+        return precio_total
+    else:
+        return None
+    
 if __name__ == "__main__":
     dicFrutas = {"Platano": 1.35, "Manzana": 0.80, "Pera": 0.85, "Naranja": 0.70}
     fruta = input("Escoja una fruta: ")
-    if fruta in dicFrutas:
-        kilos = float(input("¿Cuantos kilos quieres?: "))
-        precio_total = kilos * dicFrutas[fruta]
-        print(f"El precio final de {kilos} kilos de {fruta} es de {precio_total:.2f}")
-    else:
+
+    while fruta not in dicFrutas:
         print("La fruta seleccionada no está en el diccionario.")
+        fruta = input("Escoja una fruta: ")
+
+    kilos_validos = False
+    while not kilos_validos:
+        kilos = input("¿Cuántos kilos quieres?: ")
+        if kilos.replace(".", "").isdigit() and float(kilos) >= 0:
+            kilos = float(kilos)
+            kilos_validos = True
+        else:
+            print("Por favor, ingrese un número positivo para los kilos.")
+
+    precio_total = calcular_precio(fruta, kilos, dicFrutas)
+    
+    if precio_total is not None:
+        print("El precio final de", kilos, "kilos de", fruta, "es de", round(precio_total,2))
+    else:
+        print("Ha ocurrido un error al calcular el precio.")
