@@ -57,7 +57,7 @@ if __name__ == "__main__":
     while opcion != "6":
 
         if opcion == "1":
-            
+            # Entrada
             nombre = input("Escriba su nombre: ")
             apellidos = input("Escriba sus apellidos: ")
             direccion = input("Escriba su direccion: ")
@@ -67,41 +67,56 @@ if __name__ == "__main__":
             nif = input("Escriba su NIF: ")
         
             datos_cliente = {}
-            # Añade los datos del cliente  
+            # Procesamiento y salida  
             anadir_datos(datos_cliente, nombre, apellidos, direccion, telefono, correo, preferente, nif)
-            # Añadir el cliente a la base de datos
             anadir_cliente_base_datos(clientes, nif, datos_cliente)
         
         elif opcion == "2":
+            # Entrada
             nif = input("Escriba el NIF del cliente que desea eliminar: ")
+            # Proceso
             if nif in clientes:
                 eliminar_cliente(clientes, nif)
+                # Salida 1
                 print(f"Cliente con NIF {nif} eliminado.")
             else:
+                # Salida 2
                 print(f"No se encontró ningún cliente con NIF {nif}.")
         
         elif opcion == "3":
+            # Entrada
             nif = input("Escriba el NIF del cliente que desea mostrar: ")
+            # Procesamiento
             if nif in clientes:
+                # Salida 1
                 print(f"Datos del cliente con NIF {nif}:")
                 for clave, valor in clientes[nif].items():
                     print(f"{clave}: {valor}")
             else:
+                # Salida 2
                 print(f"No se encontró ningún cliente con NIF {nif}.")
 
         elif opcion == "4":
+            # Entrada
             print("Lista de todos los clientes:")
+            # Proceso
             for nif, datos in clientes.items():
+                # Salida 1
                 print(f"NIF: {nif}")
                 for clave, valor in datos.items():
+                    # Salida 1.1
                     print(f"{clave}: {valor}")
 
         elif opcion == "5":
+            # Entrada
             print("Clientes preferentes:")
+            # Proceso
             for nif, datos in clientes.items():
                 if datos["preferente"]:
+                    # Salida 1
                     print(f"NIF: {nif}")
                     for clave, valor in datos.items():
+                        # Salida 1.1
                         print(f"{clave}: {valor}")
         
         opcion = menu()
