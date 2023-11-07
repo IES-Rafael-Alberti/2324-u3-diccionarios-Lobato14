@@ -8,39 +8,69 @@
 # mostrar por pantalla la cantidad cobrada hasta el momento y la cantidad pendiente de 
 # cobro.
 
-def main():
-    facturas = {}
-    opcion = ""
-    while opcion != "3":
-        print("\n¿Qué quieres hacer?")
-        print("1. Añadir nueva factura")
-        print("2. Pagar factura existente")
-        print("3. Terminar")
-        opcion = input("Selecciona una opción: ")
+# Imprime el menu del programa
+def menu() -> str :
+    print("\n¿Qué quieres hacer?")
+    print("1. Añadir nueva factura")
+    print("2. Pagar factura existente")
+    print("3. Mostrar estado final de las facturas")
+    print("4. Terminar el programa")
+    return input("Selecciona una opción: ")
 
+# Función que verifica y paga una factura del diccionario de factura
+def factura_a_pagar(facturas,num_factura):
+    if num_factura in facturas and facturas[num_factura] > 0:
+        facturas[num_factura] = 0
+        return "Factura pagada correctamente."
+    else:
+        return "Factura no encontrada o ya pagada."
+
+# Añade la factura al diccionario
+def anadir_factura(facturas, num_factura, coste):
+    facturas[num_factura] = coste
+
+# Funcion que calcula el total cobrado y el pediente de las facturas
+def estado_final(facturas):
+    total_cobrado = sum(facturas.values())
+    total_pendiente = sum([valor for valor in facturas.values() if valor > 0])
+    return total_cobrado, total_pendiente
+
+if __name__ == "__main__":
+
+    facturas = {}
+    opcion = menu()
+    while opcion != "4":
+        
         if opcion == "1":
+            # Entrada
             num_factura = input("Introduce el número de factura: ")
             coste = float(input("Introduce el coste de la factura: "))
-            facturas[num_factura] = coste
+            # Proceso
+            anadir_factura(facturas, num_factura, coste)
+            # Salida
             print("Factura añadida correctamente.")
 
         elif opcion == "2":
+            # Entrada
             num_factura = input("Introduce el número de factura que deseas pagar: ")
-            if num_factura in facturas and facturas[num_factura] > 0:
-                facturas[num_factura] = 0
-                print("Factura pagada correctamente.")
-            else:
-                print("Factura no encontrada o ya pagada.")
+            # Proceso
+            realizacion_factura = factura_a_pagar(facturas, num_factura)
+            # Salida
+            print(realizacion_factura)
 
         elif opcion == "3":
+            # Entrada
             print("Estado final de las facturas:")
-            total_cobrado = sum(facturas.values())
-            total_pendiente = sum([valor for valor in facturas.values() if valor > 0])
+            # Proceso
+            total_cobrado, total_pendiente = estado_final(facturas)
+            # Salida
             print("Cantidad cobrada hasta el momento: ", total_cobrado)
             print("Cantidad pendiente de cobro: ", total_pendiente)
 
         else:
+            # Salida
             print("Opción no válida. Por favor, selecciona una opción válida.")
-
-if __name__ == "__main__":
-    main()
+        
+        opcion = menu()
+    # Salida
+    print("Programa Terminado. Hasta la proxima")
