@@ -11,17 +11,6 @@
     #   …	…
     # Total	Coste
 
-def agregar_producto(listaCompra, contador):
-    articulo = input(f"Escriba el artículo {contador} a comprar: ")
-    precio_valido = False
-    while not precio_valido:
-        precio = input("Escriba su precio correspondiente: ")
-        if precio.replace('.', '', 1).isdigit() and float(precio) > 0:
-            precio_valido = True
-            listaCompra[articulo] = float(precio)
-        else:
-            print("Precio inválido. Debe ingresar un número positivo.")
-        
 
 def mostrar_lista_compra(listaCompra):
     print("\nLista de la compra\n")
@@ -31,14 +20,22 @@ def mostrar_lista_compra(listaCompra):
         total += precio
     return f"\nTotal \t\t Coste: {total}"
 
+def anadir_prod(listaCompra, articulo, precio):
+    if precio.replace('.', '', 1).isdigit() and float(precio) > 0:
+        listaCompra[articulo] = float(precio)
+    else:
+        print("Precio inválido. Debe ingresar un número positivo.")
+
 if __name__ == "__main__":
     # Entrada
     listaCompra = {}
     continuar_agregando = "si"
     contador = 1
     # Proceso
-    while continuar_agregando.lower() == "si":
-        agregar_producto(listaCompra, contador)
+    while continuar_agregando.lower() != "no":
+        articulo = input(f"Escriba el artículo {contador} a comprar: ")
+        precio = input("Escriba su precio correspondiente: ")
+        anadir_prod(listaCompra, articulo, precio)
         continuar_agregando = input("¿Deseas añadir un nuevo producto? (si/no): ")
         contador += 1
     
