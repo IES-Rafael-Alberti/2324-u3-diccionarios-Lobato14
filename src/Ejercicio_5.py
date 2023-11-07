@@ -4,12 +4,14 @@
 # donde <asignatura> es cada una de las asignaturas del curso, y <créditos> son sus 
 # créditos. Al final debe mostrar también el número total de créditos del curso.
 
+# Funcion que muestra los creditos de cada asignatura
 def mostrar_creditos(creditos_asignaturas):
     mensaje = ""
     for asignatura, creditos in creditos_asignaturas.items():
         mensaje += asignatura + " tiene " + str(creditos) + " créditos.\n"
     return mensaje
 
+# Funcion que calcula el total de los creditos
 def calcular_total_creditos(creditos_asignaturas):
     return sum(creditos_asignaturas.values())
 

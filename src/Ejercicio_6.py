@@ -3,12 +3,15 @@
 # que se le pida al usuario. Cada vez que se añada un nuevo dato debe imprimirse el 
 # contenido del diccionario.
 
+# Funcion que valida la edad introducida
 def validar_edad(edad):
     return edad.isdigit() and int(edad) >= 0
 
+# Funcion que valida el telefono introducido
 def validar_telefono(telefono):
     return telefono.isdigit()
 
+# Funcion que imprime la lista de usuarios
 def imprimir_lista_usuarios(usuarios):
     print("Lista de usuarios:")
     for usuario in usuarios:

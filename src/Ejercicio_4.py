@@ -2,6 +2,7 @@
 # por pantalla la misma fecha en formato dd de <mes> de aaaa donde <mes> es el 
 # nombre del mes.
 
+# Funcion que formetea el string a formato fecha
 def formatear_fecha(fecha):
     meses = {
         1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio",

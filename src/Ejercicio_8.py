@@ -6,6 +6,7 @@
 # palabra a palabra. Si una palabra no está en el diccionario debe dejarla 
 # sin traducir.
 
+# Funcion que comprueba si todas las palabras de una cadena son palabras
 def son_todas_letras(palabras):
     for par in palabras:
         palabra, traduccion = par.strip().split(':')
@@ -13,6 +14,7 @@ def son_todas_letras(palabras):
             return False
     return True
 
+# Funcion que traduce la palabra desde el dicionario a la frase
 def traducir_frase(diccionario, frase):
     palabras = frase.split()
     frase_traducida = []
@@ -21,6 +23,7 @@ def traducir_frase(diccionario, frase):
         frase_traducida.append(traduccion)
     return ' '.join(frase_traducida)
 
+# Función en donde secrea el diccionario de las palabras a traducir
 def crear_diccionario(entrada_usuario):
     diccionario = {}
     pares_palabras = entrada_usuario.split(',')
@@ -29,6 +32,7 @@ def crear_diccionario(entrada_usuario):
         diccionario[palabra] = traduccion
     return diccionario
 
+# Función que verifica la frase traducida
 def verificar_frase(frase_espanol):
     return frase_espanol.replace(" ", "").isalpha()
 

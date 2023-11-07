@@ -9,6 +9,7 @@
 #   Pera	         0.85
 #   Naranja	         0.70
 
+# Funcion que calcula el precio segun los kilos de fruta
 def calcular_precio(fruta, kilos, diccionario_frutas):
     if fruta in diccionario_frutas and kilos >= 0:
         precio_total = kilos * diccionario_frutas[fruta]

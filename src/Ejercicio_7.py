@@ -11,7 +11,7 @@
     #   …	…
     # Total	Coste
 
-
+# Funcion que muestra la lista de la compra
 def mostrar_lista_compra(listaCompra):
     print("\nLista de la compra\n")
     total = 0
@@ -20,6 +20,7 @@ def mostrar_lista_compra(listaCompra):
         total += precio
     return f"\nTotal \t\t Coste: {total}"
 
+# Funcion que añade los productos a la lista de la compra
 def anadir_prod(listaCompra, articulo, precio):
     if precio.replace('.', '', 1).isdigit() and float(precio) > 0:
         listaCompra[articulo] = float(precio)

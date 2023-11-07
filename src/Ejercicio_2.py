@@ -2,12 +2,15 @@
 # lo guarde en un diccionario. Después debe mostrar por pantalla el mensaje <nombre> 
 # tiene <edad> años, vive en <dirección> y su número de teléfono es <teléfono>.
 
+# Funcion que valida la edad introducida
 def validar_edad(edad):
     return edad.isdigit() and int(edad) >= 0
 
+# Funcion que valida el numero de telefono introducido
 def validar_telefono(telefono):
     return telefono.isdigit() and len(telefono) == 10
 
+# Funcion que muestra el mensaje de los datos del usuario
 def mostrar_mensaje(datosUser):
     mensaje = datosUser["nombre"], "tiene", datosUser["edad"], "años, vive en", datosUser["direccion"], "y su número de teléfono es", datosUser["telefono"]
     return mensaje
