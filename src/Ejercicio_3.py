@@ -9,8 +9,24 @@
 #   Pera	         0.85
 #   Naranja	         0.70
 
-# Funcion que calcula el precio segun los kilos de fruta
-def calcular_precio(fruta, kilos, diccionario_frutas):
+def calcular_precio(fruta:str, kilos:str, diccionario_frutas:dict) -> float:
+    """ Funcion que calcula el precio segun los kilos de fruta
+
+    Parameters
+    ----------
+    fruta : str
+        Fruta introducida en el diccionario
+    kilos : str
+        Numeros de kilos introducidos en el diccionario
+    diccionario_frutas : dict
+        Diccionario en donde se almacenan los productos y su precio
+
+    Returns
+    -------
+    float:
+        Devuelve el precio final que del producto introducido por los kilos introducidos
+    
+    """
     if fruta in diccionario_frutas and kilos >= 0:
         precio_total = kilos * diccionario_frutas[fruta]
         return precio_total

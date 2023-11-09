@@ -3,7 +3,20 @@
 # nombre del mes.
 
 # Funcion que formetea el string a formato fecha
-def formatear_fecha(fecha):
+def formatear_fecha(fecha:str) -> str:
+    """
+    Formatea una fecha en el formato dd/mm/aaaa a dd de <nombre del mes> de aaaa.
+
+    Parameters
+    ----------
+    fecha : str 
+        Es el tipo de fecha en formato dd/mm/aaaa.
+
+    Returns
+    -------
+    str: 
+        La fecha formateada o None si el formato o mes son inválidos.
+    """
     meses = {
         1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio",
         7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre", 11: "noviembre", 
@@ -21,9 +34,9 @@ def formatear_fecha(fecha):
             fecha_formateada = f"{dia} de {nombre_mes} de {anio}"
             return fecha_formateada
         else:
-            return "Mes inválido. Por favor, ingrese una fecha válida."
+            return None  # Mes inválido
     else:
-        return "Formato de fecha incorrecto. Por favor, ingrese la fecha en formato dd/mm/aaaa."
+        return None  # Formato de fecha incorrecto
 
 if __name__ == "__main__":
     # Entrada
@@ -32,10 +45,9 @@ if __name__ == "__main__":
         fecha = input("Ingrese una fecha en formato dd/mm/aaaa: ")
         # Proceso
         fecha_formateada = formatear_fecha(fecha)
-        if fecha_formateada != "Mes inválido. Por favor, ingrese una fecha válida." and fecha_formateada != "Formato de fecha incorrecto. Por favor, ingrese la fecha en formato dd/mm/aaaa.":
+        if fecha_formateada is not None:
             fecha_valida = True
-            # Salida 1
+            # Salida
             print(fecha_formateada)
         else:
-            # Salida 2
-            print(fecha_formateada)
+            print("Fecha inválida. Por favor, ingrese una fecha válida en formato dd/mm/aaaa.")
