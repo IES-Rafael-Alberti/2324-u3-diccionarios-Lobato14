@@ -2,17 +2,53 @@
 # lo guarde en un diccionario. Después debe mostrar por pantalla el mensaje <nombre> 
 # tiene <edad> años, vive en <dirección> y su número de teléfono es <teléfono>.
 
-# Funcion que valida la edad introducida
-def validar_edad(edad):
+def validar_edad(edad:int) -> int:
+    """ Función que valida la edad introducida
+
+    Parameters
+    ----------
+    edad : int
+        Edad introducida por el usuario
+
+    Returns
+    -------
+    int:
+        Devuelve la edad si es digito o si la edad el mayor o igual a 0
+    
+    """
     return edad.isdigit() and int(edad) >= 0
 
-# Funcion que valida el numero de telefono introducido
-def validar_telefono(telefono):
-    return telefono.isdigit() and len(telefono) == 10
+def validar_telefono(telefono:str) -> bool:
+    """ Funcion que valida el numero de telefono introducido
 
-# Funcion que muestra el mensaje de los datos del usuario
-def mostrar_mensaje(datosUser):
-    mensaje = datosUser["nombre"], "tiene", datosUser["edad"], "años, vive en", datosUser["direccion"], "y su número de teléfono es", datosUser["telefono"]
+    Parameters
+    ----------
+    telefono : str
+        Número de telefono introducido por el usuario
+
+    Returns
+    -------
+    int:
+        Devuelve un número entero si es digito y si la longitud del telefono es igual a 10
+    
+    """
+    return telefono.isdigit() and len(telefono) == 9
+
+def mostrar_mensaje(datosUser:dict) -> str:
+    """ Funcion que muestra el mensaje de los datos del usuario
+
+    Parameters
+    ----------
+    datosUser : dict
+        Diccionario en donde se almacenan los datos del usuario
+
+    Returns
+    -------
+    str:
+        Devuelve el mensaje introducido en la variable "mensaje" 
+    
+    """
+    mensaje = f"{datosUser['nombre']} tiene {datosUser['edad']} años, vive en {datosUser['direccion']} y su número de teléfono es {datosUser['telefono']}"
     return mensaje
 
 if __name__ == "__main__":
@@ -41,4 +77,4 @@ if __name__ == "__main__":
     # Proceso
     resultMensaje = mostrar_mensaje(datosUser)
     # Salida
-    print(resultMensaje[0], resultMensaje[1], resultMensaje[2], resultMensaje[3], resultMensaje[4], resultMensaje[5], resultMensaje[6])
+    print(resultMensaje)
