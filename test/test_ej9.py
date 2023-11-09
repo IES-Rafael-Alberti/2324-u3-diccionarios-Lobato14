@@ -1,19 +1,32 @@
-from src.Ejercicio_9 import factura_a_pagar, estado_final, anadir_factura
+from src.Ejercicio_9 import pagar_factura, anadir_factura, estado_final_cobrado, estado_final_pendiente
 
-# Test para la función pagar_factura
 def test_factura_a_pagar():
+    """
+        Test para comprobar la función pagar_factura
+    """
     facturas = {"1": 100, "2": 200, "3": 0}
-    assert factura_a_pagar(facturas, "1") == "Factura pagada correctamente."
-    assert factura_a_pagar(facturas, "2") == "Factura pagada correctamente."
-    assert factura_a_pagar(facturas, "3") == "Factura no encontrada o ya pagada."
+    assert pagar_factura(facturas, "1") == True
+    assert pagar_factura(facturas, "2") == True
+    assert pagar_factura(facturas, "3") == False
 
-# Test para la función estado_final
-def test_estado_final():
+def test_estado_final_cobrado():
+    """
+        Test para comprobar la función estado_final_cobrado
+    """
     facturas = {"1": 100, "2": 200, "3": 0}
-    assert estado_final(facturas) == (300, 300)
+    assert estado_final_cobrado(facturas) == 300
 
-# Test para la función anadir_factura
+def test_estado_final_pendiente():
+    """
+        Test para comprobar la función estado_final_pendiente
+    """
+    facturas = {"1": 100, "2": 200, "3": 0}
+    assert estado_final_pendiente(facturas) == 300
+
 def test_anadir_factura():
+    """
+        Test para comprobar la función anadir_factura
+    """
     facturas = {}
     anadir_factura(facturas, "1", 100)
     assert facturas == {"1": 100}

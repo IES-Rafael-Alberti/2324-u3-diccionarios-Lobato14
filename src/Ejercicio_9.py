@@ -8,8 +8,9 @@
 # mostrar por pantalla la cantidad cobrada hasta el momento y la cantidad pendiente de 
 # cobro.
 
-# Imprime el menu del programa
 def menu() -> str :
+    """Imprime el menu del programa
+    """
     print("\n¿Qué quieres hacer?")
     print("1. Añadir nueva factura")
     print("2. Pagar factura existente")
@@ -17,23 +18,94 @@ def menu() -> str :
     print("4. Terminar el programa")
     return input("Selecciona una opción: ")
 
-# Función que verifica y paga una factura del diccionario de factura
-def factura_a_pagar(facturas,num_factura):
+def pagar_factura(facturas:dict,num_factura:str) -> bool: 
+    """Paga una factura del diccionario de factura
+
+    Parameters
+    ----------
+    facturas : dict
+        La facturas y el estado de estas 
+    num_factura : str
+        El identificador de la factura a pagar
+
+    Returns
+    -------
+    bool
+        True si se paga correctamente, False si no existe o ya está pagada.
+    """
     if num_factura in facturas and facturas[num_factura] > 0:
         facturas[num_factura] = 0
-        return "Factura pagada correctamente."
+        return True
     else:
-        return "Factura no encontrada o ya pagada."
+        return False
 
-# Añade la factura al diccionario
-def anadir_factura(facturas, num_factura, coste):
+def anadir_factura(facturas:dict, num_factura:str, coste:float) -> float:
+    """Añade la factura al diccionario
+
+    Parameters
+    ----------
+    facturas : dict
+        La facturas y el estado de estas 
+    num_factura : str
+        El identificador de la factura a pagar
+    coste:
+        El precio de la factura a pagar
+    """
     facturas[num_factura] = coste
 
-# Funcion que calcula el total cobrado y el pediente de las facturas
-def estado_final(facturas):
+def estado_final_cobrado(facturas:dict) -> float:
+    """Funcion que calcula el total cobrado de las facturas
+
+    Parameters
+    ----------
+    facturas : dict
+        Diccionario en donde se almacenan las facturas
+
+    Returns
+    -------
+    float
+        Se devuelve el total cobrado y el total pendiente
+    """
     total_cobrado = sum(facturas.values())
+    return total_cobrado
+
+def estado_final_pendiente(facturas:dict) -> float:
+    """Funcion que calcula el total pediente de las facturas
+
+    Parameters
+    ----------
+    facturas : dict
+        Diccionario en donde se almacenan las facturas
+
+    Returns
+    -------
+    float
+        Se devuelve el total cobrado
+    """
     total_pendiente = sum([valor for valor in facturas.values() if valor > 0])
-    return total_cobrado, total_pendiente
+    return total_pendiente
+
+def leer_numero_desde_consola(mensaje:str)-> float:
+    """Lee desde consola, mostrando un mensaje. Repite la lectura hasta que lo introducido sea correcto.
+
+    Parameters
+    ----------
+    mensaje : str
+        El mensaje amostrar en consola.
+
+    Returns
+    -------
+    float
+        un numero flotante
+    """
+    numeroCorrecto = False
+    while not numeroCorrecto:
+        try:
+            numero = float(input(mensaje))
+            numeroCorrecto = True
+        except:
+            pass
+    return numero
 
 if __name__ == "__main__":
 
@@ -44,7 +116,7 @@ if __name__ == "__main__":
         if opcion == "1":
             # Entrada
             num_factura = input("Introduce el número de factura: ")
-            coste = float(input("Introduce el coste de la factura: "))
+            coste = leer_numero_desde_consola("Introduce el coste de la factura: ")
             # Proceso
             anadir_factura(facturas, num_factura, coste)
             # Salida
@@ -54,7 +126,7 @@ if __name__ == "__main__":
             # Entrada
             num_factura = input("Introduce el número de factura que deseas pagar: ")
             # Proceso
-            realizacion_factura = factura_a_pagar(facturas, num_factura)
+            realizacion_factura = pagar_factura(facturas, num_factura)
             # Salida
             print(realizacion_factura)
 
@@ -62,7 +134,8 @@ if __name__ == "__main__":
             # Entrada
             print("Estado final de las facturas:")
             # Proceso
-            total_cobrado, total_pendiente = estado_final(facturas)
+            total_cobrado = estado_final_cobrado(facturas)
+            total_pendiente = estado_final_pendiente(facturas)
             # Salida
             print("Cantidad cobrada hasta el momento: ", total_cobrado)
             print("Cantidad pendiente de cobro: ", total_pendiente)
