@@ -34,9 +34,9 @@ def formatear_fecha(fecha:str) -> str:
             fecha_formateada = f"{dia} de {nombre_mes} de {anio}"
             return fecha_formateada
         else:
-            return None  # Mes inválido
+            return None
     else:
-        return None  # Formato de fecha incorrecto
+        return None
 
 if __name__ == "__main__":
     # Entrada

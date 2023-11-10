@@ -3,8 +3,21 @@
 # que se le pida al usuario. Cada vez que se añada un nuevo dato debe imprimirse el 
 # contenido del diccionario.
 
-# Funcion que valida la edad introducida
-def validar_edad(edad):
+def validar_edad(edad:int) -> int:
+    """
+    Funcion que valida la edad introducida
+
+    Parameters
+    ----------
+    edad : int
+       Edad a introducir por teclado
+                                 
+
+    Returns
+    -------
+    int: 
+        Devuelve la edad si es digito y si la edad es mayor o igual que 0
+    """
     return edad.isdigit() and int(edad) >= 0
 
 # Funcion que valida el telefono introducido
