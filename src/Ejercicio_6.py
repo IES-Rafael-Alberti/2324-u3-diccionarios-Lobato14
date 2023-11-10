@@ -20,12 +20,36 @@ def validar_edad(edad:int) -> int:
     """
     return edad.isdigit() and int(edad) >= 0
 
-# Funcion que valida el telefono introducido
-def validar_telefono(telefono):
+def validar_telefono(telefono:str) -> int:
+    """
+    Funcion que valida el telefono introducido
+
+    Parameters
+    ----------
+    telefono : str
+       Numero de telefono introducido por teclado
+                                 
+
+    Returns
+    -------
+    int: 
+        Devuelve el telefonono si es digito
+    """
     return telefono.isdigit()
 
-# Funcion que imprime la lista de usuarios
 def imprimir_lista_usuarios(usuarios):
+    """
+    Imprime la lista de usuarios.
+
+    Parameters
+    -----------
+
+    - usuarios (list): Lista de usuarios a imprimir.
+
+    Returns
+    -------
+    None
+    """
     print("Lista de usuarios:")
     for usuario in usuarios:
         print(usuario)

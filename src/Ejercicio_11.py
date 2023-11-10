@@ -23,8 +23,20 @@
 # '98376547F': {'nombre': 'Carmen Sánchez', 'email': 'carmen@mail.com', 'teléfono': '667677855', 
 # 'descuento': 15.7}}
 
-def analizar_directorio(directorio_texto, directorio):
+def analizar_directorio(directorio_texto: str, directorio: dict) -> dict:
+    """
+    Analiza el contenido de un directorio en formato de texto y lo convierte en un diccionario.
 
+    Parameters:
+    - directorio_texto : str
+        Texto que contiene la información del directorio en formato CSV.
+    - directorio : dict
+        Diccionario que almacenará la información del directorio.
+
+    Returns:
+    - dict
+        Diccionario actualizado con la información del directorio.
+    """
     lineas = directorio_texto.split('\n')
     campos = lineas[0].split(';')
 

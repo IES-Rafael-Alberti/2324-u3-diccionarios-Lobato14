@@ -6,16 +6,44 @@
 # palabra a palabra. Si una palabra no está en el diccionario debe dejarla 
 # sin traducir.
 
-# Funcion que comprueba si todas las palabras de una cadena son palabras
-def son_todas_letras(palabras):
+def son_todas_letras(palabras:str) -> bool:
+    """
+    Verifica si todas las palabras de una cadena están compuestas únicamente por letras.
+
+    Parameters
+    ----------
+    - palabras : str 
+        Cadena de palabras en formato 'palabra:traduccion' separadas por espacios.
+
+    Returns
+    -------
+    - bool: 
+        True si todas las palabras son válidas (compuestas solo por letras), False en caso contrario.
+    """
     for par in palabras:
         palabra, traduccion = par.strip().split(':')
         if not palabra.isalpha() or not traduccion.isalpha():
             return False
     return True
 
-# Funcion que traduce la palabra desde el dicionario a la frase
-def traducir_frase(diccionario, frase):
+
+def traducir_frase(diccionario:dict, frase:str) -> str:
+    """
+    Traduce una frase palabra por palabra utilizando un diccionario.
+
+    Parameters
+    ----------
+    - diccionario : dict
+        Diccionario que contiene las traducciones de las palabras.
+    - frase : str
+        La frase que se desea traducir.
+
+    Returns
+    -------
+    - str:
+        La frase traducida, donde las palabras no encontradas en el diccionario se 
+        mantienen iguales.
+    """
     palabras = frase.split()
     frase_traducida = []
     for palabra in palabras:
@@ -23,8 +51,25 @@ def traducir_frase(diccionario, frase):
         frase_traducida.append(traduccion)
     return ' '.join(frase_traducida)
 
-# Función en donde secrea el diccionario de las palabras a traducir
-def crear_diccionario(entrada_usuario):
+
+def crear_diccionario(entrada_usuario:str) -> dict:
+    """
+    Crea un diccionario a partir de la entrada del usuario que contiene pares de palabras y 
+    sus traducciones.
+
+    Parameters
+    ----------
+    - entrada_usuario : str 
+        Cadena que contiene pares de palabras y traducciones separadas por comas 
+        introducidas por el usuario
+
+
+    Returns
+    --------
+    - dict: 
+        Diccionario creado a partir de las palabras y traducciones proporcionadas por 
+        el usuario.
+    """
     diccionario = {}
     pares_palabras = entrada_usuario.split(',')
     for par in pares_palabras:
@@ -32,9 +77,23 @@ def crear_diccionario(entrada_usuario):
         diccionario[palabra] = traduccion
     return diccionario
 
-# Función que verifica la frase traducida
-def verificar_frase(frase_espanol):
+def verificar_frase(frase_espanol:str) -> bool:
+    """
+    Verifica si una cadena contiene solo letras, lo que sugiere que es una frase en 
+    español.
+
+    Parameters
+    ----------
+    - frase_espanol : str
+        Cadena que se desea verificar.
+
+    Returns
+    -------
+    - bool:
+        True si la cadena contiene solo letras, False en caso contrario.
+    """
     return frase_espanol.replace(" ", "").isalpha()
+
 
 if __name__ == "__main__":
     # Entrada

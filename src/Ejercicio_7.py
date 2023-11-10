@@ -11,8 +11,21 @@
     #   …	…
     # Total	Coste
 
-# Funcion que muestra la lista de la compra
-def mostrar_lista_compra(listaCompra):
+def mostrar_lista_compra(listaCompra:dict) -> str:
+    """
+    Muestra la lista de la compra con los nombres de los artículos y sus respectivos precios.
+
+    Parameters
+    ----------
+    
+    - listaCompra : dict 
+        Diccionario que contiene los artículos de la lista de compra y sus precios.
+
+    Returns
+    -------
+
+    str: Cadena de texto que representa la lista de la compra junto con el total del coste.
+    """
     print("\nLista de la compra\n")
     total = 0
     for articulo, precio in listaCompra.items():
@@ -20,12 +33,30 @@ def mostrar_lista_compra(listaCompra):
         total += precio
     return f"\nTotal \t\t Coste: {total}"
 
-# Funcion que añade los productos a la lista de la compra
-def anadir_prod(listaCompra, articulo, precio):
+def anadir_prod(listaCompra:dict, articulo:str, precio:str):
+    """
+    Añade un producto a la lista de la compra con su respectivo precio.
+
+    Parameters
+    ----------
+    - listaCompra : dict
+        Diccionario que representa la lista de la compra.
+    - articulo : str 
+        Nombre del artículo a añadir.
+    - precio : str: 
+        Precio del artículo a añadir.
+
+    Returns
+    --------
+
+    - None: 
+        No devuelve ningún valor. Modifica la lista de la compra si la entrada es válida.
+    """
     if precio.replace('.', '', 1).isdigit() and float(precio) > 0:
         listaCompra[articulo] = float(precio)
     else:
         print("Precio inválido. Debe ingresar un número positivo.")
+
 
 if __name__ == "__main__":
     # Entrada

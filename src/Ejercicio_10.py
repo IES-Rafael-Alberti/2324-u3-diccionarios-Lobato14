@@ -20,8 +20,15 @@
 
 # 6. Terminar el programa.
 
-# Imprime el menu del programa
 def menu() -> str :
+    """
+    Muestra el menú del programa y solicita al usuario que seleccione una opción.
+
+    Returns
+    -------
+    - str:
+        Opción seleccionada por el usuario.
+    """
     print("\n¿Qué quieres hacer?")
     print("-----------------")
     print("1. Añadir cliente")
@@ -33,8 +40,29 @@ def menu() -> str :
     print("-----------------")
     return input("Selecciona una opción: ")
 
-# Funcion que añade los datos del cliente al diccionario
-def anadir_datos(datos_cliente, nombre, apellidos, direccion, telefono, correo, preferente, nif):
+def anadir_datos(datos_cliente: dict, nombre: str, apellidos: str, direccion: str, telefono: str, correo: str, preferente: bool, nif: str) -> None:
+    """
+    Añade los datos del cliente al diccionario proporcionado.
+
+    Parameters
+    ----------
+    - datos_cliente : dict
+        Diccionario que almacena los datos del cliente.
+    - nombre : str
+        Nombre del cliente.
+    - apellidos : str
+        Apellidos del cliente.
+    - direccion : str
+        Dirección del cliente.
+    - telefono : str
+        Número de teléfono del cliente.
+    - correo : str
+        Correo electrónico del cliente.
+    - preferente : bool
+        Indica si el cliente es preferente o no.
+    - nif : str
+        Número de identificación fiscal del cliente.
+    """
     datos_cliente["nombre"] = nombre
     datos_cliente["apellidos"] = apellidos
     datos_cliente["direccion"] = direccion
@@ -43,12 +71,32 @@ def anadir_datos(datos_cliente, nombre, apellidos, direccion, telefono, correo, 
     datos_cliente["preferente"] = preferente
     datos_cliente["nif"] = nif
 
-# Funcion que añade al cliente en la base datos por su nif
-def anadir_cliente_base_datos(clientes, nif, datos_cliente):
+def anadir_cliente_base_datos(clientes: dict, nif: str, datos_cliente: dict) -> None:
+    """
+    Añade al cliente en la base de datos utilizando su NIF como clave.
+
+    Parameters
+    ----------
+    - clientes : dict
+        Base de datos que almacena a los clientes.
+    - nif : str
+        Número de identificación fiscal del cliente (clave en la base de datos).
+    - datos_cliente : dict
+        Datos del cliente a ser almacenados en la base de datos.
+    """
     clientes[nif] = datos_cliente
 
-# Funcion que elimina al cliente por su nif
-def eliminar_cliente(clientes, nif):
+
+def eliminar_cliente(clientes: dict, nif: str) -> None:
+    """
+    Elimina al cliente de la base de datos utilizando su NIF como clave.
+
+    Parameters:
+    - clientes : dict
+        Base de datos que almacena a los clientes.
+    - nif : str
+        Número de identificación fiscal del cliente a ser eliminado.
+    """
     del clientes[nif]
 
 if __name__ == "__main__":
